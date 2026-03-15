@@ -1,0 +1,58 @@
+# My Awesome Skill
+
+## Description
+A brief description of what this skill does and what problem it solves for consuming agents.
+
+## Capabilities
+- Capability 1: What the skill can do
+- Capability 2: Another thing it handles
+- Capability 3: Advanced feature
+
+## Usage
+```
+Input: { "param1": "value", "param2": "value" }
+Output: { "result": "..." }
+```
+
+## Examples
+
+### Example 1: Basic usage
+```
+nexus-skill use skill-my-awesome-skill
+```
+
+### Example 2: With parameters
+```json
+{
+  "input": "some data",
+  "options": { "format": "json" }
+}
+```
+
+## Requirements
+- List any dependencies or prerequisites
+- Network access requirements
+- Filesystem access needs
+
+## Limitations
+- Known limitations or edge cases
+- Performance considerations
+
+---
+
+### nexus.yaml (companion file)
+
+```yaml
+name: My Awesome Skill
+version: 1.0.0
+author: your-name
+description: Brief description
+tags:
+  - tag1
+  - tag2
+network: none          # none | internal-only | external
+filesystem: read-only  # none | read-only | read-write
+execution: sandboxed   # none | sandboxed | unrestricted
+price_per_use: 0.001   # USD per use (optional)
+license_fee: null       # One-time fee (optional)
+```

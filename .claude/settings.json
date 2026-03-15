@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "\\tmp",
+      "C:\\Users\\choon\\AppData\\Local\\Temp",
+      "c:\\Users\\choon\\Skills Exchange\\.claude\\skills\\gstack"
+    ]
+  }
+}

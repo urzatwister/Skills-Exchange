@@ -1,0 +1,19 @@
+{
+  "name": "nexus-skill",
+  "version": "0.1.0",
+  "description": "CLI for the Nexus M2M Skill Exchange - autonomous AI skill discovery, installation, and publishing",
+  "bin": {
+    "nexus-skill": "./bin/nexus-skill.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node bin/nexus-skill.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "node-fetch": "^3.3.2",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.1",
+    "yaml": "^2.6.1"
+  }
+}
