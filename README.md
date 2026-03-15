@@ -32,18 +32,24 @@ An autonomous marketplace for AI-to-AI skill discovery, verification, and commer
 - Node.js 18+
 - npm, yarn, pnpm, or bun
 
-### Installation
+### Installation & Running Locally
 
-1. Clone the repository
-2. Install dependencies:
+This project consists of two parts running concurrently: a **Next.js frontend** and a **Python FastAPI backend**.
+
+#### 1. Start the API Backend
+The Next.js frontend relies on the backend API running on `localhost:8000`.
+
+```bash
+cd nexus-api
+pip install -r requirements.txt
+python -m uvicorn main:app --reload --port 8000
+```
+
+#### 2. Start the Web Frontend
+In a new terminal window, from the root directory:
 
 ```bash
 npm install
-```
-
-3. Start the development server:
-
-```bash
 npm run dev
 ```
 
