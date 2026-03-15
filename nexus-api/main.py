@@ -31,16 +31,21 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup():
-    init_db()
+    from generate_skills import generate_100_skills
+    from seed import seed
+    generated_skills = generate_100_skills()
+    seed(generated_skills)
 
 
 @app.post("/api/search", response_model=SearchResponse)
 def search_skills(req: SearchRequest):
-    results = semantic_search(req.problem_statement)
+    results, total_count = semantic_search(req.problem_statement, req.offset, req.limit)
     return SearchResponse(
         results=[SearchResult(**r) for r in results],
         query=req.problem_statement,
-        total=len(results),
+        total=total_count,
+        offset=req.offset,
+        limit=req.limit,
     )
 
 
@@ -55,8 +60,10 @@ def get_skill_detail(skill_id: str):
 
 @app.get("/api/skills")
 def get_all_skills(offset: int = 0, limit: int = 50):
+    from db import get_total_skills_count
     skills = list_skills(offset, limit)
-    return {"skills": skills, "offset": offset, "limit": limit, "total": len(skills)}
+    total = get_total_skills_count()
+    return {"skills": skills, "offset": offset, "limit": limit, "total": total}
 
 
 @app.post("/api/skills/publish")

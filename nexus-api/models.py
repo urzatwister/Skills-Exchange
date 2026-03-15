@@ -43,6 +43,8 @@ class SkillMetadata(BaseModel):
 
 class SearchRequest(BaseModel):
     problem_statement: str
+    offset: int = 0
+    limit: int = 12
 
 
 class SearchResult(BaseModel):
@@ -60,6 +62,8 @@ class SearchResponse(BaseModel):
     results: list[SearchResult]
     query: str
     total: int
+    offset: int = 0
+    limit: int = 12
 
 
 class PublishRequest(BaseModel):

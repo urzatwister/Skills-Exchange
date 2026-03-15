@@ -123,7 +123,7 @@ def insert_skill(skill: dict) -> str:
     return skill["skill_id"]
 
 
-def semantic_search(query: str, limit: int = 10) -> list[dict]:
+def semantic_search(query: str, offset: int = 0, limit: int = 12) -> tuple[list[dict], int]:
     query_embedding = generate_embedding(query)
     conn = get_connection()
     rows = conn.execute("SELECT * FROM skills WHERE embedding IS NOT NULL").fetchall()
@@ -144,7 +144,16 @@ def semantic_search(query: str, limit: int = 10) -> list[dict]:
         })
 
     results.sort(key=lambda x: x["confidence"], reverse=True)
-    return results[:limit]  # type: ignore[no-matching-overload]
+    total_count = len(results)
+    sliced_results = results[offset : offset + limit]
+    return sliced_results, total_count
+
+
+def get_total_skills_count() -> int:
+    conn = get_connection()
+    count = conn.execute("SELECT COUNT(*) as count FROM skills").fetchone()["count"]
+    conn.close()
+    return count
 
 
 def get_skill(skill_id: str) -> dict | None:

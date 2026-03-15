@@ -189,16 +189,23 @@ Output: { "optimized": [...], "savings_percent": 62 }
     },
 ]
 
+def seed(generated_skills=None):
+    from generate_skills import generate_100_skills
+    from db import init_db, insert_skill
 
-def seed():
+    if generated_skills is None:
+        generated_skills = generate_100_skills()
+
+    all_skills = SAMPLE_SKILLS + generated_skills
+
     print("Initializing database...")
     init_db()
-    print(f"Seeding {len(SAMPLE_SKILLS)} skills...")
-    for skill in SAMPLE_SKILLS:
+    
+    print(f"Seeding {len(all_skills)} skills...")
+    for skill in all_skills:
         insert_skill(skill)
         print(f"  + {skill['name']} ({skill['skill_id']})")
     print("Done!")
-
 
 if __name__ == "__main__":
     seed()
