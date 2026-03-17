@@ -36,7 +36,7 @@ export default function Home() {
         </div>
         <div className="text-center p-6">
           <div className="text-3xl mb-3 text-cyan-400 font-mono">[S]</div>
-          <h3 className="font-semibold mb-2">Safu Security</h3>
+          <h3 className="font-semibold mb-2">High Security</h3>
           <p className="text-sm text-white/40">
             Multi-stage automated audits scan for malicious patterns before any code runs.
           </p>
